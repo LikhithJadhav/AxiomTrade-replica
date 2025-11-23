@@ -32,12 +32,22 @@ export default function TokenTable() {
   }, [tokens, sortKey, sortDesc]);
 
   const headerCell = (label: string, key: SortKey | null, width?: string) => (
-    <th className={clsx("py-3 px-4 text-left text-sm text-neutral-400", width)} onClick={() => { if (key) { setSortKey(key); setSortDesc(k => (k === key ? !k : true)); } }}>
-      <div className="flex items-center gap-2">
+    <th
+        className={clsx("py-3 px-4 text-left text-sm text-neutral-400", width)}
+        onClick={() => {
+        if (key) {
+            setSortKey(key);
+            // CORRECT: compare current sortKey (string) with clicked key, toggle sortDesc accordingly
+            setSortDesc((prevDesc) => (sortKey === key ? !prevDesc : true));
+        }
+        }}
+    >
+        <div className="flex items-center gap-2">
         <span>{label}</span>
-      </div>
+        </div>
     </th>
-  );
+    );
+
 
   return (
     <div className="bg-neutral-800 rounded-lg p-4 shadow-sm">
