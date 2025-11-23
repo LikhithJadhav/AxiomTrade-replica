@@ -8,6 +8,7 @@ export type Token = {
   name: string;
   logo?: string;
   timeAgo?: string;
+  circulatingSupply?: number;
   marketCap: number;
   marketCapChangePct: number;
   liquidity: number;
