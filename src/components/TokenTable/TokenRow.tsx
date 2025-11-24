@@ -78,11 +78,16 @@ export default function TokenRow({ token }: { token: Token }) {
         <td className="py-4 pr-6 min-w-[220px]">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-md bg-neutral-700 flex items-center justify-center overflow-hidden">
-              {token.logo ? (
-                <img src={token.logo} alt={token.symbol} className="w-full h-full object-cover" />
-              ) : (
-                <div className="text-sm">{token.symbol[0]}</div>
-              )}
+                <img src={token.logo} alt={token.symbol} className="w-full h-full object-cover" 
+                 onError={(e) => {
+                // fallback if the image 404s
+                (e.currentTarget as HTMLImageElement).src = "/fallback.png";
+                }}/>
+
+                <div className="flex flex-col">
+                <span className="font-medium">{token.name}</span>
+                <span className="text-xs text-neutral-400">{token.symbol}</span>
+                </div>
             </div>
 
             <div className="flex-1 min-w-0">

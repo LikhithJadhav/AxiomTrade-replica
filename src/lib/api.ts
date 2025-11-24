@@ -8,3 +8,4 @@ export async function fetchTokens(): Promise<any[]> {
     { id: "3", symbol: "MIG", name: "Migrated Token", price: 0.03, change24h: 10.1, category: "migrated" },
   ];
 }
+ 
